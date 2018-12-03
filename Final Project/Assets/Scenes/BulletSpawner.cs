@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class shooting : MonoBehaviour {
+public class BulletSpawner: MonoBehaviour {
 
 	public GameObject bulletPrefab;
 	public GameObject homingPrefab;
@@ -14,17 +14,14 @@ public class shooting : MonoBehaviour {
         PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
     }
 
-	void Fire()
+	void FireNormal()
 	{
-       // Vector2 mouse = new Vector2(transform.localPosition.x, transform.localPosition.y); //Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    // Vector2 mouse = new Vector2(transform.localPosition.x, transform.localPosition.y); //Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate(
 				bulletPrefab,
 				PlayerCoords,
 				Quaternion.identity);
-
-		// Add velocity to the bullet
-		bullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * 65;
 
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 2.0f);
@@ -39,7 +36,6 @@ public class shooting : MonoBehaviour {
 				PlayerCoords,
 				Quaternion.identity);
 
-		// Add velocity to the bullet
 
 		Destroy(bullet, 2.0f);
 		// Destroy the bullet after 2 seconds
@@ -50,7 +46,7 @@ public class shooting : MonoBehaviour {
         PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
         if (Input.GetMouseButtonDown(0))
 		{
-			Fire();
+			FireNormal();
 		}
 		else if (Input.GetMouseButtonDown(1))
 		{
