@@ -12,7 +12,7 @@ public class BulletHoming : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		target = GameObject.Find("Player");
+        target = GameObject.FindGameObjectWithTag("Boss");
 		rb = GetComponent<Rigidbody2D>();
 	}
 	

@@ -7,20 +7,20 @@ public class shooting : MonoBehaviour {
 
 	public GameObject bulletPrefab;
 	public GameObject homingPrefab;
-	public GameObject player;
 
+    private Vector2 PlayerCoords;
 	// Use this for initialization
 	void Start () {
-
-	}
+        PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
+    }
 
 	void Fire()
 	{
-		Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+       // Vector2 mouse = new Vector2(transform.localPosition.x, transform.localPosition.y); //Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate(
 				bulletPrefab,
-				mouse,
+				PlayerCoords,
 				Quaternion.identity);
 
 		// Add velocity to the bullet
@@ -32,11 +32,11 @@ public class shooting : MonoBehaviour {
 
 	void FireHoming()
 	{
-		Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		//Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate(
 				homingPrefab,
-				mouse,
+				PlayerCoords,
 				Quaternion.identity);
 
 		// Add velocity to the bullet
@@ -46,8 +46,9 @@ public class shooting : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () {
-		if (Input.GetMouseButtonDown(0))
+	void Update () {
+        PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        if (Input.GetMouseButtonDown(0))
 		{
 			Fire();
 		}
