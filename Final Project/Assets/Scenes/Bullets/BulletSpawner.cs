@@ -7,11 +7,12 @@ public class BulletSpawner: MonoBehaviour {
 
 	public GameObject bulletPrefab;
 	public GameObject homingPrefab;
+	public GameObject splitPrefab;
 
     private Vector2 PlayerCoords;
 	// Use this for initialization
 	void Start () {
-        PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
+		PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
     }
 
 	void FireNormal()
@@ -24,7 +25,7 @@ public class BulletSpawner: MonoBehaviour {
 				Quaternion.identity);
 
 		// Destroy the bullet after 2 seconds
-		Destroy(bullet, 2.0f);
+		Destroy(bullet, 10.0f);
 	}
 
 	void FireHoming()
@@ -37,20 +38,38 @@ public class BulletSpawner: MonoBehaviour {
 				Quaternion.identity);
 
 
-		Destroy(bullet, 2.0f);
+		Destroy(bullet, 10.0f);
+		// Destroy the bullet after 2 seconds
+	}
+
+	void FireSplit()
+	{
+		//Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		// Create the Bullet from the Bullet Prefab
+		var bullet = (GameObject)Instantiate(
+				splitPrefab,
+				PlayerCoords,
+				Quaternion.identity);
+
+
+		Destroy(bullet, 10.0f);
 		// Destroy the bullet after 2 seconds
 	}
 
 	// Update is called once per frame
 	void Update () {
-        PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
-        if (Input.GetMouseButtonDown(0))
+		PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
+		if (Input.GetMouseButtonDown(0))
 		{
 			FireNormal();
 		}
 		else if (Input.GetMouseButtonDown(1))
 		{
 			FireHoming();
+		}
+		else if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			FireSplit();
 		}
 	}
 }

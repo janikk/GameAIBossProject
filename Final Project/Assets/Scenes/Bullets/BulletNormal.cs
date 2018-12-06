@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletNormal : MonoBehaviour {
 
+	public float speed;
 	Rigidbody2D rb;
 
 	// Use this for initialization
@@ -13,6 +14,6 @@ public class BulletNormal : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rb.velocity = Vector2.right * 65;
+		rb.velocity = Vector2.right * speed;
 	}
 }

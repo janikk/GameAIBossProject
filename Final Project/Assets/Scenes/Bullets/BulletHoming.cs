@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletHoming : MonoBehaviour {
 
 	GameObject target;
+	public float speed;
 
 	Vector3 dir;
 
@@ -20,6 +21,6 @@ public class BulletHoming : MonoBehaviour {
 	void Update () {
 		dir = (target.transform.position - transform.position).normalized;
 
-		rb.velocity = new Vector2(dir.x * 65, dir.y * 65); 
+		rb.velocity = new Vector2(dir.x * speed, dir.y * speed); 
 	}
 }
