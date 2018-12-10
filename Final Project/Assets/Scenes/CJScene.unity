@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 519637990}
   - component: {fileID: 519637992}
   - component: {fileID: 519637993}
+  - component: {fileID: 519637994}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -430,7 +431,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519637989}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -458,6 +459,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
+--- !u!114 &519637994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519637989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c439536538ed4124bbc5648c2252607e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1868531044538442, guid: 185be67d13f921e4b84753a7814af8c5,
+    type: 2}
+  homingPrefab: {fileID: 1688518892298476, guid: 86db153979448b54dbb46f225a0693ae,
+    type: 2}
+  splitPrefab: {fileID: 1930502695549086, guid: b7f0cf98393d7af48ab499f4c024dd1e,
+    type: 2}
 --- !u!1 &540361508
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +686,17 @@ Prefab:
       value: 
       objectReference: {fileID: 1417606752146078, guid: 432f936bca364144db5c184a59893d97,
         type: 2}
+    - target: {fileID: 114143768779469752, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f,
+        type: 2}
+      propertyPath: homingPrefab
+      value: 
+      objectReference: {fileID: 1284916390713878, guid: 310ae5ca533ed4e498cf219f4f16b420,
+        type: 2}
+    - target: {fileID: 50254264814911800, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f, type: 2}
   m_IsPrefabAsset: 0

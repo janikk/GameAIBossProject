@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletNormal : MonoBehaviour {
 
+	public bool isBoss;
 	public float speed;
 	Rigidbody2D rb;
 
@@ -14,6 +15,13 @@ public class BulletNormal : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rb.velocity = Vector2.right * speed;
+		if (isBoss)
+		{
+			rb.velocity = Vector2.left * speed;
+		}
+		else
+		{
+			rb.velocity = Vector2.right * speed;
+		}
 	}
 }

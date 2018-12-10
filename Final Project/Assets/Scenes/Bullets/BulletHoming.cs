@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletHoming : MonoBehaviour {
 
-	GameObject target;
+	public bool isBoss;
+	public GameObject target;
 	public float speed;
 
 	Vector3 dir;
@@ -13,14 +14,20 @@ public class BulletHoming : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		target = GameObject.FindGameObjectWithTag("Boss");
 		rb = GetComponent<Rigidbody2D>();
+		if (isBoss)
+		{
+			target = GameObject.Find("Character");
+		}
+		else
+		{
+			target = GameObject.Find("Boss");
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		dir = (target.transform.position - transform.position).normalized;
-
-		rb.velocity = new Vector2(dir.x * speed, dir.y * speed); 
+		rb.velocity = new Vector2(dir.x * speed, dir.y * speed);
 	}
 }

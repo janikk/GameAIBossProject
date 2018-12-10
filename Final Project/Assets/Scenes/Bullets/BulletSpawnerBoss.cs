@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BulletSpawner: MonoBehaviour {
+public class BulletSpawnerBoss : MonoBehaviour
+{
 
 	public GameObject bulletPrefab;
 	public GameObject homingPrefab;
 	public GameObject splitPrefab;
 
-  private Vector2 PlayerCoords;
+	private Vector2 PlayerCoords;
+
 	// Use this for initialization
-	void Start () {
-		PlayerCoords = new Vector2(transform.localPosition.x - 2, transform.localPosition.y);
-    }
+	void Start()
+	{
+		PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
+	}
 
 	void FireNormal()
 	{
-    // Vector2 mouse = new Vector2(transform.localPosition.x, transform.localPosition.y); //Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		// Vector2 mouse = new Vector2(transform.localPosition.x, transform.localPosition.y); //Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab
 		var bullet = (GameObject)Instantiate(
 				bulletPrefab,
@@ -57,13 +60,14 @@ public class BulletSpawner: MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 		PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
 		if (Input.GetMouseButtonDown(0))
 		{
 			FireNormal();
 		}
-		else if (Input.GetMouseButtonDown(2))
+		else if (Input.GetMouseButtonDown(1))
 		{
 			FireHoming();
 		}
