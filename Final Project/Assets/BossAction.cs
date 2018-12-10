@@ -8,6 +8,7 @@ public class BossAction : MonoBehaviour
     public float moveSpeed = 5f;
     public float rotSpeed = 100f;
 
+    private bool attackgoing = false;
     private bool isWandering = false;
     private bool isRotatingLeft = false;
     private bool isRotatingRight = false;
@@ -26,6 +27,14 @@ public class BossAction : MonoBehaviour
         //If not wandering....
         if (!isWandering)
         {
+            int attacktype = Random.Range(1,4);
+            
+            print(attacktype);
+            if(!attackgoing){
+                attackgoing = true;
+                StartCoroutine(attack(attacktype));
+            }
+           // while(attackgoing){}
             StartCoroutine(Wander());
         }
 
@@ -39,6 +48,38 @@ public class BossAction : MonoBehaviour
             //Keep rotating to the left until false
             transform.Rotate(Vector3.forward * Time.deltaTime * -rotSpeed);
         }
+    }
+
+    IEnumerator attack(int attacktype)
+    {
+        BulletSpawnerBoss attacking = transform.GetComponent<BulletSpawnerBoss>();
+        if(attacktype == 1){
+            attacking.FireNormal();
+            yield return new WaitForSeconds(1);
+            attacking.FireNormal();
+            yield return new WaitForSeconds(.5f);
+            attacking.FireNormal();
+            yield return new WaitForSeconds(.5f);
+            attacking.FireNormal();
+            yield return new WaitForSeconds(3);
+        }
+        else if(attacktype == 2){
+            attacking.FireHoming();
+            yield return new WaitForSeconds(1);
+            attacking.FireHoming();
+            yield return new WaitForSeconds(4);
+        }
+        else{
+            attacking.FireSplit();
+            yield return new WaitForSeconds(2);
+            attacking.FireSplit();
+            yield return new WaitForSeconds(2);
+            attacking.FireSplit();
+            yield return new WaitForSeconds(3);
+        }
+
+        //Allows us to call this again
+        attackgoing = false;
     }
 
     IEnumerator Wander()

@@ -25,10 +25,8 @@ public class MinionFlock : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print ("...");
 		steeringOutput steering = new steeringOutput();
 		steering.linear = target.transform.position - kinematic.position;
-		print (target.transform.position);
 		//steering.linear.normalize();
 		steering.linear = steering.linear * maxAcceleration;
         steering.linear = Vector3.ClampMagnitude(steering.linear, maxAcceleration);
