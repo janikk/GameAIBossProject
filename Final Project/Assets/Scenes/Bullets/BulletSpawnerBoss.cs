@@ -18,7 +18,7 @@ public class BulletSpawnerBoss : MonoBehaviour
 		PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
 	}
 
-	void FireNormal()
+	public void FireNormal()
 	{
 		// Vector2 mouse = new Vector2(transform.localPosition.x, transform.localPosition.y); //Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab
@@ -31,7 +31,7 @@ public class BulletSpawnerBoss : MonoBehaviour
 		Destroy(bullet, 10.0f);
 	}
 
-	void FireHoming()
+	public void FireHoming()
 	{
 		//Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab
@@ -45,7 +45,7 @@ public class BulletSpawnerBoss : MonoBehaviour
 		// Destroy the bullet after 2 seconds
 	}
 
-	void FireSplit()
+	public void FireSplit()
 	{
 		//Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		// Create the Bullet from the Bullet Prefab

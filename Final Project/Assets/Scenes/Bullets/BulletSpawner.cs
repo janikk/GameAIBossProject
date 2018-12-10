@@ -27,7 +27,7 @@ public class BulletSpawner: MonoBehaviour {
 		// Destroy the bullet after 2 seconds
 		Destroy(bullet, 10.0f);
 	}
-
+/*
 	void FireHoming()
 	{
 		//Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -55,6 +55,7 @@ public class BulletSpawner: MonoBehaviour {
 		Destroy(bullet, 10.0f);
 		// Destroy the bullet after 2 seconds
 	}
+	*/
 
 	// Update is called once per frame
 	void Update () {
@@ -62,7 +63,7 @@ public class BulletSpawner: MonoBehaviour {
 		if (Input.GetMouseButtonDown(0))
 		{
 			FireNormal();
-		}
+		}/*
 		else if (Input.GetMouseButtonDown(2))
 		{
 			FireHoming();
@@ -70,6 +71,6 @@ public class BulletSpawner: MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Tab))
 		{
 			FireSplit();
-		}
+		}*/
 	}
 }

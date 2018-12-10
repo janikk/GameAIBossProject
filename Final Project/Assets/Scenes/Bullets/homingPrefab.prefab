@@ -103,7 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 0
   target: {fileID: 1805284763670258, guid: 77c606b9f0486ce45bc3e01a5d6c385f, type: 2}
-  speed: 10
+  acceleration: 0.1
+  maxSpeed: 2
 --- !u!212 &212579800857562916
 SpriteRenderer:
   m_ObjectHideFlags: 1
