@@ -697,6 +697,15 @@ Prefab:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61640956482274284, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585560209922662, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f, type: 2}
   m_IsPrefabAsset: 0
