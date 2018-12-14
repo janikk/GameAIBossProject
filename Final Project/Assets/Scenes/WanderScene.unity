@@ -313,11 +313,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4592840629036206, guid: 77c606b9f0486ce45bc3e01a5d6c385f, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4592840629036206, guid: 77c606b9f0486ce45bc3e01a5d6c385f, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4592840629036206, guid: 77c606b9f0486ce45bc3e01a5d6c385f, type: 2}
       propertyPath: m_RootOrder
@@ -327,6 +327,10 @@ Prefab:
         type: 2}
       propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4592840629036206, guid: 77c606b9f0486ce45bc3e01a5d6c385f, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c606b9f0486ce45bc3e01a5d6c385f, type: 2}
@@ -349,6 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotSpeed: 100
+  isRushing: 0
+  target: {fileID: 0}
 --- !u!114 &371311883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db20e3c8e9accf47ac813b6f3d397a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: 0
 --- !u!114 &371311884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +694,10 @@ Prefab:
         type: 2}
       propertyPath: Dash
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585560209922662, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bbca8b148d8e8e42b8b59004c8d2f4f, type: 2}

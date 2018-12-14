@@ -8,6 +8,9 @@ public class BossAction : MonoBehaviour
     private bool isWandering = false;
     private bool isRotatingLeft = false;
     private bool isRotatingRight = false;
+    public bool isRushing = false;
+    public GameObject target;
+
     // Use this for initialization
     void Start()
     {
@@ -15,21 +18,13 @@ public class BossAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         //Move forward in direction facing
         transform.position += transform.right * moveSpeed * Time.deltaTime;
         //If not wandering....
         if (!isWandering)
         {
-            //What kind of movement?
-            float moveType = Random.Range(0f, 1f);
-            if (moveType <= .15f)
-            {
-                StartCoroutine(Rush());
-            }
-            else
-            {
-                StartCoroutine(Wander());
-            }
+            StartCoroutine(Wander());
         }
         if (isRotatingRight)
         {
@@ -48,24 +43,42 @@ public class BossAction : MonoBehaviour
         int rotTime = Random.Range(1, 3);
         int wait = Random.Range(1, 4);
         int rotLorR = Random.Range(1, 3);
+        float rush = Random.Range(0f, 1f);
         //Set wandering to true so update doesn't keep calling this
         isWandering = true;
         //Wait for a few seconds- keep going forward
-        yield return new WaitForSeconds(wait);
-        //Which way are we turning?
-        if (rotLorR == 1)
+        if (rush < .85f)
         {
-            //Rotate for rotTime seconds
-            isRotatingRight = true;
-            yield return new WaitForSeconds(rotTime);
-            isRotatingRight = false;
-        }
-        if (rotLorR == 2)
+            yield return new WaitForSeconds(wait);
+            //Which way are we turning?
+            if (rotLorR == 1)
+            {
+                //Rotate for rotTime seconds
+                isRotatingRight = true;
+                yield return new WaitForSeconds(rotTime);
+                isRotatingRight = false;
+            }
+            if (rotLorR == 2)
+            {
+                //Rotate for rotTime seconds (but left)
+                isRotatingLeft = true;
+                yield return new WaitForSeconds(rotTime);
+                isRotatingLeft = false;
+            }
+        } else
         {
-            //Rotate for rotTime seconds (but left)
-            isRotatingLeft = true;
-            yield return new WaitForSeconds(rotTime);
-            isRotatingLeft = false;
+            isRushing = true;
+            //Look at target
+            Vector3 dir = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //Move fast
+            moveSpeed *= 2;
+            yield return new WaitForSeconds(wait);
+            //Back to normal
+            moveSpeed /= 2;
+            isRushing = false;
+
         }
         //Allows us to call this again
         isWandering = false;

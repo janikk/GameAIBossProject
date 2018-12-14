@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossStates : MonoBehaviour {
+public class BossStates : MonoBehaviour
+{
 
     private int HP;
 
-    private bool attack = false;
+    public bool attack = false;
 
     enum AttackState
     {
@@ -28,9 +29,10 @@ public class BossStates : MonoBehaviour {
         HP = int.Parse(GameObject.Find("Boss_HP").GetComponent<Text>().text);
         //Generate number to determine attack
         float attackType = Random.Range(0f, 1f);
-
-        //If attacking is false, attack
-        if (!attack)
+        //Rushing? If so, don't attack
+        bool rush = GetComponent<BossAction>().isRushing;
+        //If attacking and rushing are false, attack
+        if (!attack&&!rush)
         {
             //Attack difficulty determined by health
             if (AS == AttackState.STRAIGHT)
@@ -53,27 +55,27 @@ public class BossStates : MonoBehaviour {
         //Attacking- don't want to have a barrage of bullets
         attack = true;
         BulletSpawnerBoss attacking = transform.GetComponent<BulletSpawnerBoss>();
-        //Don't attack 50% of the time
-        if (attackType >= 0.5f)
+        //Don't attack 20% of the time
+        if (attackType >= 0.80f)
         {
             Debug.Log("30+ health, don't attack");
             yield return new WaitForSeconds(2);
         }
-        //Straight shot 25% of the time
-        else if (attackType >= .25f)
+        //Straight shot 45% of the time
+        else if (attackType >= .35f)
         {
             Debug.Log("30+ health, straight shot");
             attacking.FireNormal();
             yield return new WaitForSeconds(2);
         }
-        //Straight homing shot 13% of the time
-        else if (attackType >= .12f)
+        //Straight homing shot 18% of the time
+        else if (attackType >= .17f)
         {
             Debug.Log("30+ health, homing shot");
             attacking.FireHoming();
             yield return new WaitForSeconds(2);
         }
-        //Scattered homing shot 12% of the time
+        //Scattered homing shot 17% of the time
         else
         {
             Debug.Log("30+ health, split homing");
