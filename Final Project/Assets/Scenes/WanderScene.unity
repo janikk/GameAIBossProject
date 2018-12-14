@@ -349,6 +349,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotSpeed: 100
+--- !u!114 &371311883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371311877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db20e3c8e9accf47ac813b6f3d397a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &371311884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371311877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c439536538ed4124bbc5648c2252607e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1868531044538442, guid: 185be67d13f921e4b84753a7814af8c5,
+    type: 2}
+  homingPrefab: {fileID: 1688518892298476, guid: 86db153979448b54dbb46f225a0693ae,
+    type: 2}
+  splitPrefab: {fileID: 1930502695549086, guid: b7f0cf98393d7af48ab499f4c024dd1e,
+    type: 2}
 --- !u!1 &378566329
 GameObject:
   m_ObjectHideFlags: 0
