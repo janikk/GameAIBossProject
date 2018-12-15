@@ -23,8 +23,9 @@ public class MinionFlockManager : MonoBehaviour {
             //Determine starting position of birb
             Vector3 pos = new Vector3(Random.Range(-spawnX,spawnX), Random.Range(-spawnY,spawnY), 0);
             //Make birb
-            //minions[i] = Instantiate(minonPrefab, this.transform.position + pos, Quaternion.identity) as GameObject;
-            //minions[i].GetComponent<MinionFlock>().MinionFlockManager = this.gameObject;
+            minions[i] = Instantiate(minonPrefab, this.transform.position + pos, Quaternion.identity) as GameObject;
+          	minions[i].GetComponent<MinionFlock>().minionManager = this.gameObject;
+          	minions[i].GetComponent<MinionFlock>().target = GameObject.Find("Character");
         }
 	}
 	
