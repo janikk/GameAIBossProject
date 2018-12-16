@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9185a664fee9044c4a81553c378c8080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numminions: 10
+  numminions: 6
   spawnX: 5
   spawnY: 5
   minions: []

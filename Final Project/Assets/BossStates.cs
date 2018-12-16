@@ -107,14 +107,14 @@ public class BossStates : MonoBehaviour
             attacking.FireHoming();
             yield return new WaitForSeconds(1);
         }
-        //Summon minions 30% of the time
-        else if (attackType >= .2f)
+        //Summon minions 20% of the time
+        else if (attackType >= .3f)
         {
             Debug.Log("<30 health, summon minions");
             attacking.SummonMinions();
             yield return new WaitForSeconds(1);
         }
-        //Straight shot 20% of the time
+        //Straight shot 30% of the time
         else
         {
             Debug.Log("<30 health, straight shot");
