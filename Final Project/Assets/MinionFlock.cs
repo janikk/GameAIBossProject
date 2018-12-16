@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class MinionFlock : MonoBehaviour {
 	struct Kinematic{
@@ -21,11 +21,13 @@ public class MinionFlock : MonoBehaviour {
 	public GameObject target; 
 	public float maxAcceleration;
 	public float maxSpeed;
-	public GameObject minionManager;
+	public MinionFlockManager minionManager;
+    private GameObject Player_HP;
 	Kinematic kinematic;
 	// Use this for initialization
 	void Start () {
 		kinematic = new Kinematic();
+        Player_HP = GameObject.Find("Character_HP");
 	}
 	
 	// Update is called once per frame
@@ -54,7 +56,7 @@ public class MinionFlock : MonoBehaviour {
         foreach (GameObject other in minionManager.GetComponent<MinionFlockManager>().minions)
         {
             // Skip ourself!
-            if (other == this.gameObject)
+            if (other == this.gameObject||other ==null)
             {
                 continue;
             }
@@ -91,7 +93,7 @@ public class MinionFlock : MonoBehaviour {
         foreach (GameObject other in minionManager.GetComponent<MinionFlockManager>().minions)
         {
             // Skip ourself and super far away minions!
-            if (other == this.gameObject || Vector3.Distance(kinematic.position, other.GetComponent<MinionFlock>().kinematic.position) > 20)
+            if (other == this.gameObject ||other ==null || Vector3.Distance(kinematic.position, other.GetComponent<MinionFlock>().kinematic.position) > 20)
             {
                 continue;
             }
@@ -103,11 +105,35 @@ public class MinionFlock : MonoBehaviour {
         {
             // Get average position to follow
             sum /= count;
-            print (sum - kinematic.position);
             return (sum - kinematic.position);
         }
         // Otherwise, don't change direction
         return Vector3.zero;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print(collision.gameObject.tag + "In the thiiiiing");
+        if(collision.gameObject.tag == "PlayerBullet")
+        {
+            print("yeah obviously");
+            minionManager.destroyThis(this);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            print("are you real????");
+            DepleteHealth();
+            minionManager.destroyThis(this);
+            Destroy(gameObject);
+        }
+    }
+    private void DepleteHealth()
+    {
+        int Health = int.Parse(Player_HP.GetComponent<Text>().text);
+        Health-=2;
+        Player_HP.GetComponent<Text>().text = Health.ToString();
     }
 
 }

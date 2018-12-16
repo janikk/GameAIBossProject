@@ -24,13 +24,17 @@ public class MinionFlockManager : MonoBehaviour {
             Vector3 pos = new Vector3(Random.Range(-spawnX,spawnX), Random.Range(-spawnY,spawnY), 0);
             //Make birb
             minions[i] = Instantiate(minonPrefab, this.transform.position + pos, Quaternion.identity) as GameObject;
-          	minions[i].GetComponent<MinionFlock>().minionManager = this.gameObject;
+          	minions[i].GetComponent<MinionFlock>().minionManager = this;
           	minions[i].GetComponent<MinionFlock>().target = GameObject.Find("Character");
         }
 	}
-	
 	// Update is called once per frame
 	void Update () {
-		
+		if (numminions == 0){
+			Destroy(gameObject);
+		}
+	}
+	public void destroyThis(MinionFlock thing){
+		 numminions--;
 	}
 }

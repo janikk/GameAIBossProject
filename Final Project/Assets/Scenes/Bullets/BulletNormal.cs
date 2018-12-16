@@ -11,17 +11,28 @@ public class BulletNormal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
+		if (isBoss)
+		{
+			if (GameObject.Find("Character").transform.localScale.x > transform.localScale.x){
+				rb.velocity = Vector2.right * speed;
+			}
+			else{
+				rb.velocity = Vector2.left * speed;
+			}
+		}
+		else
+		{	
+			if (GameObject.Find("Character").GetComponent<movement>().right){
+				rb.velocity = Vector2.right * speed;
+			}
+			else{
+				rb.velocity = Vector2.left * speed;
+			}
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (isBoss)
-		{
-			rb.velocity = Vector2.left * speed;
-		}
-		else
-		{
-			rb.velocity = Vector2.right * speed;
-		}
+
 	}
 }

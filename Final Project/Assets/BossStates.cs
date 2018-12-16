@@ -8,6 +8,7 @@ public class BossStates : MonoBehaviour
 
     private int HP;
 
+    private GameObject Player_HP;
     public bool attack = false;
 
     enum AttackState
@@ -20,6 +21,7 @@ public class BossStates : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
+        Player_HP = GameObject.Find("Character_HP");
         AS = AttackState.STRAIGHT;
 	}
 	
@@ -109,7 +111,7 @@ public class BossStates : MonoBehaviour
         else if (attackType >= .2f)
         {
             Debug.Log("<30 health, summon minions");
-            //attacking.SummonMinions();
+            attacking.SummonMinions();
             yield return new WaitForSeconds(1);
         }
         //Straight shot 20% of the time
@@ -120,5 +122,14 @@ public class BossStates : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         attack = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            {
+                int Health = int.Parse(Player_HP.GetComponent<Text>().text);
+                Health-=4;
+                Player_HP.GetComponent<Text>().text = Health.ToString();
+        }
     }
 }

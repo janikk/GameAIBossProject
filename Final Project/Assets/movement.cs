@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour {
 
@@ -18,6 +19,7 @@ public class movement : MonoBehaviour {
 	public float JumpTime;
 	public float Radius;
 	public LayerMask Ground;
+	public bool right;
 
 	private bool isDashing;
 
@@ -28,6 +30,7 @@ public class movement : MonoBehaviour {
 		isGrounded = true;
 		isJumping = false;
 		isDashing = true;
+		right = true;
 		JumpTimeCounter = JumpTime;
 	}
 	
@@ -64,7 +67,14 @@ public class movement : MonoBehaviour {
 		}else{
 			rb.velocity = new Vector2(movex * Speed, rb.velocity.y);
 		}
-
+		if(movex > 0){
+			right = true;
+			transform.localScale  = new Vector3(.5f, .5f, .5f);
+		}
+		else if(movex < 0){
+			right = false;
+			transform.localScale  = new Vector3(-.5f, .5f, .5f);
+		}
 
     }
 }

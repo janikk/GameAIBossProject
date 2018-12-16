@@ -9,6 +9,7 @@ public class BulletSpawnerBoss : MonoBehaviour
 	public GameObject bulletPrefab;
 	public GameObject homingPrefab;
 	public GameObject splitPrefab;
+	public GameObject minionPrefab;
 
 	private Vector2 PlayerCoords;
 
@@ -58,12 +59,18 @@ public class BulletSpawnerBoss : MonoBehaviour
 		Destroy(bullet, 10.0f);
 		// Destroy the bullet after 2 seconds
 	}
+	public void SummonMinions(){
+		var manager = (GameObject)Instantiate(
+				minionPrefab,
+				PlayerCoords,
+				Quaternion.identity);
+	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		PlayerCoords = new Vector2(transform.localPosition.x, transform.localPosition.y);
-		if (Input.GetMouseButtonDown(0))
+		/*if (Input.GetMouseButtonDown(0))
 		{
 			FireNormal();
 		}
@@ -74,6 +81,6 @@ public class BulletSpawnerBoss : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Tab))
 		{
 			FireSplit();
-		}
+		}*/
 	}
 }

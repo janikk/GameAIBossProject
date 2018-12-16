@@ -21,11 +21,10 @@ GameObject:
   - component: {fileID: 4988390051782638}
   - component: {fileID: 212396951461654020}
   - component: {fileID: 114603377489059152}
-  - component: {fileID: 50855819705628528}
   - component: {fileID: 58819582148615798}
   m_Layer: 0
   m_Name: Minion
-  m_TagString: Untagged
+  m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,26 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50855819705628528
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1823194270250516}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!58 &58819582148615798
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -72,12 +51,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.56
+  m_Radius: 2.58
 --- !u!114 &114603377489059152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,7 +73,7 @@ MonoBehaviour:
   cohesionWeight: 0.2
   target: {fileID: 0}
   maxAcceleration: 0.03
-  maxSpeed: 2
+  maxSpeed: 2.5
   minionManager: {fileID: 0}
 --- !u!212 &212396951461654020
 SpriteRenderer:

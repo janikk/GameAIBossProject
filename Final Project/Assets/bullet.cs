@@ -26,6 +26,10 @@ public class bullet : MonoBehaviour {
             DestroyThis = true;
             DepleteBossesHealth();
         }
+        if(collision.gameObject.tag == "Minion")
+        {
+            DestroyThis = true;
+        }
     }
 
     private void DepleteBossesHealth()
