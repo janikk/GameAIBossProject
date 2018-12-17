@@ -18,6 +18,27 @@ public class BossAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Tuuurrrnnn around
+        if (transform.position.x < -36)
+        {
+            transform.position = new Vector2(-36, transform.position.y);
+            StartCoroutine(Rotate());
+        }
+        if (transform.position.x > 36)
+        {
+            transform.position = new Vector2(36, transform.position.y);
+            StartCoroutine(Rotate());
+        }
+        if (transform.position.y < -16)
+        {
+            transform.position = new Vector2(transform.position.x, -16);
+            StartCoroutine(Rotate());
+        }
+        if (transform.position.y > 22)
+        {
+            transform.position = new Vector2(transform.position.x, 22);
+            StartCoroutine(Rotate());
+        }
         target = GameObject.FindGameObjectWithTag("Player");
         //Move forward in direction facing
         transform.position += transform.right * moveSpeed * Time.deltaTime;
@@ -84,15 +105,10 @@ public class BossAction : MonoBehaviour
         isWandering = false;
     }
 
-    IEnumerator Rush()
+    IEnumerator Rotate()
     {
-        //How long to rush for
-        int rush = Random.Range(1, 4);
-        //Is it wandering? No. Will this make it work? yeah.
-        isWandering = true;
-        //PURSUE ALGORITHM HERE
-        yield return new WaitForSeconds(rush);
-        //back to the same old same old
-        isWandering = false;
+        isRotatingRight = true;
+        yield return new WaitForSeconds(2);
+        isRotatingRight = false;
     }
 }
